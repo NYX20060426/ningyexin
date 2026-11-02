@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音乐手机 - Tab 选项卡</title>
+  <style>
+    /* 命名规则：所有 CSS 类名、id 均以 nyx_ 开头（姓名首字母：宁烨鑫） */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 40px 16px;
+      background: #ffffff;
+      font-family: SimSun, "宋体", serif;
+      color: #333333;
+    }
+
+    .nyx_box {
+      width: 470px;
+      max-width: 100%;
+      margin: 0 auto;
+      border: 1px solid #c8d8e4;
+    }
+
+    /* 头部：左侧标题 + 右侧选项卡 */
+    .nyx_hd {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px 0;
+      border-bottom: 1px solid #c8d8e4;
+      background: #f4f9fd;
+    }
+
+    .nyx_title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333333;
+      padding-bottom: 8px;
+    }
+
+    .nyx_tabs {
+      display: flex;
+      gap: 4px;
+    }
+
+    .nyx_tab {
+      padding: 5px 14px 6px;
+      font-family: SimSun, "宋体", serif;
+      font-size: 14px;
+      color: #2b6ca3;
+      background: #eaf3fa;
+      border: 1px solid #b7d3e6;
+      border-bottom: none;
+      cursor: pointer;
+    }
+
+    .nyx_tab:hover {
+      background: #dcecf7;
+    }
+
+    /* 选中状态 */
+    .nyx_tab.nyx_active {
+      color: #ffffff;
+      font-weight: bold;
+      background: #3d88c9;
+      border-color: #3d88c9;
+    }
+
+    /* 内容面板 */
+    .nyx_panel {
+      padding: 12px 14px 16px;
+    }
+
+    .nyx_panel[hidden] {
+      display: none;
+    }
+
+    .nyx_list {
+      list-style: none;
+    }
+
+    .nyx_item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .nyx_item::before {
+      content: "•";
+      flex: none;
+      color: #3d88c9;
+      font-size: 12px;
+    }
+
+    .nyx_link {
+      flex: 1 1 auto;
+      color: #2b6ca3;
+      text-decoration: none;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .nyx_link:hover {
+      text-decoration: underline;
+    }
+
+    .nyx_date {
+      flex: none;
+      color: #999999;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- data-tabs 标记选项卡容器，data-default 指定默认选中项；类名/id 均以 nyx_ 开头 -->
+  <div class="nyx_box" id="nyx_box" data-tabs data-default="hangqing">
+    <div class="nyx_hd">
+      <h1 class="nyx_title" id="nyx_title">音乐手机</h1>
+      <div class="nyx_tabs" id="nyx_tabs" role="tablist" aria-label="音乐手机栏目">
+        <button class="nyx_tab" type="button" role="tab" id="nyx_tab_hangqing"
+                data-tab-target="hangqing" aria-controls="nyx_panel_hangqing" aria-selected="false">行情</button>
+        <button class="nyx_tab" type="button" role="tab" id="nyx_tab_daogou"
+                data-tab-target="daogou" aria-controls="nyx_panel_daogou" aria-selected="false">导购</button>
+        <button class="nyx_tab" type="button" role="tab" id="nyx_tab_xinpin"
+                data-tab-target="xinpin" aria-controls="nyx_panel_xinpin" aria-selected="false">新品</button>
+        <button class="nyx_tab" type="button" role="tab" id="nyx_tab_pingce"
+                data-tab-target="pingce" aria-controls="nyx_panel_pingce" aria-selected="false">评测</button>
+      </div>
+    </div>
+
+    <section class="nyx_panel" id="nyx_panel_hangqing" role="tabpanel"
+             aria-labelledby="nyx_tab_hangqing" data-tab-panel="hangqing" hidden>
+      <ul class="nyx_list">
+        <li class="nyx_item"><a class="nyx_link" href="#">音乐手机苹果iPhone 5s价格稳定</a><span class="nyx_date">(12/19)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">高性能双四核音乐手机 魅族MX3低价热卖</a><span class="nyx_date">(12/19)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">音乐质量最出色 vivo X3促销2199</a><span class="nyx_date">(12/12)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">时尚音乐手机 vivo Xplay济南2798元</a><span class="nyx_date">(11/27)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">好音乐好拍照 OPPO Find5今报价2580元</a><span class="nyx_date">(08/27)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">1.5GHz四核1080p OPPO Find 5降价热卖</a><span class="nyx_date">(07/30)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">彩色呼吸带双核机 索尼M35h促销2299</a><span class="nyx_date">(06/08)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">1.7GHz四核1080p屏 vivo Xplay热卖中</a><span class="nyx_date">(06/07)</span></li>
+      </ul>
+    </section>
+
+    <section class="nyx_panel" id="nyx_panel_daogou" role="tabpanel"
+             aria-labelledby="nyx_tab_daogou" data-tab-panel="daogou" hidden>
+      <ul class="nyx_list">
+        <li class="nyx_item"><a class="nyx_link" href="#">优秀音效漂亮外观 市售音乐手机盘点</a><span class="nyx_date">(09/13)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">不要虐待耳朵 8款独特音效的音乐手机荐</a><span class="nyx_date">(09/06)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">最低只要799 9款高性能音乐手机推荐</a><span class="nyx_date">(07/22)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">长假主导后高考时代 奖励孩子的智能手机全攻略</a><span class="nyx_date">(06/13)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">降价不限时 端午后值得关注降价四核机推荐</a><span class="nyx_date">(06/13)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">高考之后尽情狂欢! 学生超强手机推荐</a><span class="nyx_date">(06/13)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">上半年看这里 最热1080P四核旗舰手机</a><span class="nyx_date">(06/13)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">最厚不过7.98毫米 热门超薄强机大搜罗</a><span class="nyx_date">(06/08)</span></li>
+      </ul>
+    </section>
+
+    <section class="nyx_panel" id="nyx_panel_xinpin" role="tabpanel"
+             aria-labelledby="nyx_tab_xinpin" data-tab-panel="xinpin" hidden>
+      <ul class="nyx_list">
+        <li class="nyx_item"><a class="nyx_link" href="#">无限接近完美! vivo Xplay3S现场体验</a><span class="nyx_date">(12/19)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">入门音乐机 诺基亚Lumia 525现身工信部</a><span class="nyx_date">(11/05)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">传诺基亚下月将推首款音乐手机Glee</a><span class="nyx_date">(09/29)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">软萌兼施 vivo Xtudio Hi-Fi音乐圈讲解</a><span class="nyx_date">(08/23)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">没有中国 谷歌All Access音乐服务登欧洲</a><span class="nyx_date">(08/09)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">Hi-Fi录音棚 vivo X3和Xtudio音乐系统</a><span class="nyx_date">(08/07)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">Hi-Fi不够vivo又玩录音棚 X3音乐处理方案曝光</a><span class="nyx_date">(08/06)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">小伙伴们惊呆了 薄至6mm以下vivo X3终端面</a><span class="nyx_date">(07/31)</span></li>
+      </ul>
+    </section>
+
+    <section class="nyx_panel" id="nyx_panel_pingce" role="tabpanel"
+             aria-labelledby="nyx_tab_pingce" data-tab-panel="pingce" hidden>
+      <ul class="nyx_list">
+        <li class="nyx_item"><a class="nyx_link" href="#">音乐历久弥新 TD版魅族MX3评测</a><span class="nyx_date">(12/19)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">极致影音完美音质 步步高vivo Xplay移动版图赏</a><span class="nyx_date">(07/24)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">都是大屏何不同? 三星S4/Mega静态评测</a><span class="nyx_date">(06/20)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">超值四核智能机 HTC Desire 608t评测</a><span class="nyx_date">(06/20)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">完美融合微薄 魅族MX2 Flyme 2.2.5体验</a><span class="nyx_date">(06/18)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">1080p屏Hi-Fi旗舰 vivo Xplay娱乐体验</a><span class="nyx_date">(06/13)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">5.7英寸高清巨屏 酷派9070+XO影音体验</a><span class="nyx_date">(06/06)</span></li>
+        <li class="nyx_item"><a class="nyx_link" href="#">悬浮窗口播放 vivo Xplay视频功能体验</a><span class="nyx_date">(06/06)</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- JS 外部引用：单独放在 js 文件夹中 -->
+  <script src="js/tabs.js"></script>
+</body>
+</html>
