@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiper 课后作业 · 大国重器光影展 · 宁烨鑫 24001010916</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:#f6f8fc;color:#1f2937}
+  .nyx-wrap{max-width:1000px;margin:0 auto;padding:40px 20px 60px}
+
+  .nyx-head{background:linear-gradient(135deg,#0f2b5b,#1d5bbf);border-radius:20px;padding:36px 38px;color:#fff;margin-bottom:14px;box-shadow:0 12px 30px rgba(15,43,91,.3)}
+  .nyx-head .nyx-badge{display:inline-block;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+  .nyx-head h1{font-size:30px;letter-spacing:1px;line-height:1.4}
+  .nyx-head h1 b{color:#ffd166}
+  .nyx-head p{margin-top:12px;font-size:14.5px;color:#d9e3f5;line-height:2}
+  .nyx-goals{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .nyx-goals i{font-style:normal;font-size:13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);padding:6px 14px;border-radius:8px}
+
+  .nyx-rule{background:#fffbea;border:1px solid #fde68a;border-radius:16px;padding:18px 22px;margin-bottom:30px;font-size:14px;color:#7c5e10;line-height:2}
+  .nyx-rule b{color:#b45309}
+  .nyx-rule code{background:#fef3c7;color:#92400e;padding:1px 7px;border-radius:5px;font-family:Consolas,monospace;font-size:13px}
+
+  .nyx-sec{background:#fff;border-radius:18px;padding:28px 30px;margin-bottom:26px;border:1px solid #e8ecf5;box-shadow:0 4px 14px rgba(31,41,55,.06);position:relative;overflow:hidden}
+  .nyx-sec::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(#0f2b5b,#1d5bbf)}
+  .nyx-sec-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .nyx-sec-head .nyx-no{flex:none;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0f2b5b,#1d5bbf);color:#fff;font-size:19px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+  .nyx-sec-head h2{font-size:20px;color:#111827}
+  .nyx-sec-head small{display:block;font-weight:normal;color:#9ca3af;font-size:13px;margin-top:3px}
+  .nyx-sec p.nyx-txt{font-size:14.5px;color:#374151;line-height:2;margin-bottom:10px}
+  .nyx-sec p.nyx-txt b{color:#0f2b5b}
+  .nyx-sec code{background:#eef2ff;color:#1d4ed8;padding:1px 7px;border-radius:5px;font-family:Consolas,monospace;font-size:13px}
+
+  .nyx-req{background:#f0fdf4;border:1.5px dashed #16a34a;border-radius:12px;padding:14px 18px;margin:14px 0 6px}
+  .nyx-req h3{font-size:14.5px;color:#15803d;margin-bottom:6px}
+  .nyx-req p{font-size:13.5px;color:#166534;line-height:2}
+  .nyx-req code{background:#dcfce7;color:#15803d;padding:1px 7px;border-radius:5px;font-family:Consolas,monospace;font-size:12.5px}
+  .nyx-req .nyx-star{color:#e8890c;font-size:13px;display:block;margin-top:6px}
+
+  .nyx-demo{margin:18px 0 6px}
+  .nyx-demo .nyx-demo-tag{display:inline-block;font-size:12.5px;color:#0f2b5b;background:#e8f0ff;border:1px solid #c7d8f8;border-radius:999px;padding:4px 14px;margin-bottom:12px}
+  .nyx-swiper{width:100%;max-width:760px;margin:0 auto;border-radius:16px;overflow:visible!important}
+  .nyx-swiper .swiper{border-radius:16px;box-shadow:0 10px 26px rgba(15,43,91,.18)}
+  .nyx-swiper .swiper-slide{position:relative;height:340px}
+  .nyx-swiper .swiper-slide img{width:100%;height:100%;object-fit:cover;display:block}
+  .nyx-swiper .nyx-cap{position:absolute;left:0;right:0;bottom:0;padding:34px 20px 14px;color:#fff;background:linear-gradient(transparent,rgba(5,15,35,.82))}
+  .nyx-swiper .nyx-cap h3{font-size:18px;letter-spacing:1px}
+  .nyx-swiper .nyx-cap p{font-size:13px;color:#dbe6f8;margin-top:4px}
+  .nyx-swiper .swiper-pagination-bullet{background:#0f2b5b;opacity:.35}
+  .nyx-swiper .swiper-pagination-bullet-active{background:#e8890c;opacity:1;width:22px;border-radius:6px}
+  .nyx-swiper .swiper-button-next,.nyx-swiper .swiper-button-prev{width:42px;height:42px;border-radius:50%;background:rgba(15,43,91,.65);color:#fff;--swiper-navigation-size:18px;transition:background .2s}
+  .nyx-swiper .swiper-button-next:hover,.nyx-swiper .swiper-button-prev:hover{background:#e8890c}
+
+  pre.nyx-code{background:#0f2b5b;color:#e6edff;border-radius:12px;padding:16px 18px;overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:13px;line-height:1.8;margin:12px 0}
+  pre.nyx-code .nyx-k{color:#ffd166}
+  pre.nyx-code .nyx-c{color:#8aa3cc}
+
+  .nyx-chat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;margin:14px 0}
+  .nyx-chat h4{font-size:14px;color:#0f2b5b;margin-bottom:10px}
+  .nyx-turn{border-left:3px solid #1d5bbf;padding:8px 12px;margin-bottom:10px;background:#fff;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.9}
+  .nyx-turn.nyx-bad{border-left-color:#dc2626}
+  .nyx-turn.nyx-good{border-left-color:#16a34a}
+  .nyx-turn b.nyx-who{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;margin-right:6px}
+  .nyx-turn b.nyx-stu{background:#dbeafe;color:#1d4ed8}
+  .nyx-turn b.nyx-ai{background:#fef3c7;color:#b45309}
+  .nyx-turn b.nyx-fix{background:#dcfce7;color:#15803d}
+  .nyx-check{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+  .nyx-check div{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 12px;font-size:13px;color:#166534;line-height:1.7}
+  .nyx-check div b{color:#15803d}
+
+  .nyx-qa{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:14px 18px;margin:10px 0;font-size:13.5px;line-height:2;color:#374151}
+  .nyx-qa b{color:#4338ca}
+  .nyx-qa .nyx-q{color:#1e3a8a;font-weight:bold}
+
+  .nyx-back{text-align:center;margin-top:28px}
+  .nyx-back a{display:inline-block;text-decoration:none;color:#0f2b5b;font-size:14.5px;font-weight:bold;background:#fff;border:1px solid #dbe4ff;border-radius:999px;padding:10px 26px;margin:0 4px;transition:transform .2s,box-shadow .2s}
+  .nyx-back a:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,43,91,.15)}
+  footer{text-align:center;margin-top:34px;color:#9ca3af;font-size:13px;line-height:2}
+</style>
+</head>
+<body>
+<div class="nyx-wrap">
+
+  <div class="nyx-head">
+    <span class="nyx-badge">高 职 · 高 级 网 页 设 计 · 课 后 作 业</span>
+    <h1>Swiper 课后作业 · <b>大国重器光影展</b></h1>
+    <p>学号：24001010916 · 姓名：宁烨鑫　|　三项任务一次跑通：cube 立方体轮播 · creative 电影墙 · 第六件展品爱达·魔都号 + 鼠标滚轮控制。</p>
+    <div class="nyx-goals"><i>任务一 · 提示词工程师</i><i>任务二 · creative 电影墙仿写</i><i>任务三 · 综合创作 + 超纲加分</i></div>
+  </div>
+
+  <div class="nyx-rule">
+    <b>📋 作业说明：</b>本页所有轮播均已实际运行，代码直接写在底部 <code>&lt;script&gt;</code>；
+    任务一附带完整的两轮提示词与 AI 回答记录，任务二、三下方附关键代码与答辩自问自答。
+    图片均为 16:9 横版，第六件展品「爱达·魔都号」为 AI 生成配图。
+  </div>
+
+  <!-- ══════════ 任务一 ══════════ -->
+  <div class="nyx-sec">
+    <div class="nyx-sec-head">
+      <span class="nyx-no">一</span>
+      <h2>提示词工程师<small>loop 无缝循环 · 3.2s 自动翻页不停 · 圆点可点 · cube 初始效果</small></h2>
+    </div>
+    <p class="nyx-txt">下面这个轮播就是 <code>new Swiper('#nyxSw1', {...})</code> 的运行效果：初始即 <b>cube 3D 立方体</b>，每 3.2 秒自动翻一页，<b>手动拖过之后自动播放不停止</b>，底部圆点可点击跳转。</p>
+    <div class="nyx-req">
+      <h3>✍️ 任务一验收</h3>
+      <p>① 无缝循环 <code>loop:true</code>　② 3.2 秒自动翻页且手动后不停止 <code>autoplay:{delay:3200, disableOnInteraction:false}</code>　③ 圆点可点 <code>pagination:{clickable:true}</code>　④ 初始 cube <code>effect:'cube'</code></p>
+      <span class="nyx-star">⭐ 亲手验证：等它自己翻 / 拖一下松手它接着翻 / 点圆点跳转 / 看到 3D 立方体翻页</span>
+    </div>
+    <div class="nyx-demo">
+      <span class="nyx-demo-tag">🎛️ 演示一 · cube 立方体自动轮播（3.2s · 拖完不停）</span>
+      <div class="nyx-swiper">
+        <div class="swiper" id="nyxSw1">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="swiper-imgs/tiangong_1.jpg" alt="天宫空间站"><div class="nyx-cap"><h3>天宫空间站</h3><p>2022 年全面建成 · 中国人的太空家园</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fuxing_1.jpg" alt="复兴号动车组"><div class="nyx-cap"><h3>复兴号动车组</h3><p>350 km/h · 世界商业运营最高时速</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/c919_1.jpg" alt="C919大飞机"><div class="nyx-cap"><h3>C919 大飞机</h3><p>2023 年商业首航 · 国产干线客机翱翔蓝天</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fendouzhe_1.jpg" alt="奋斗者号"><div class="nyx-cap"><h3>奋斗者号</h3><p>10909 米 · 触碰地球第四极马里亚纳海沟</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fast_1.jpg" alt="中国天眼"><div class="nyx-cap"><h3>中国天眼 FAST</h3><p>500 米口径 · 世界最大单口径射电望远镜</p></div></div>
+          </div>
+          <div class="swiper-pagination" id="nyxPag1"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+
+    <h4 style="margin-top:18px;color:#0f2b5b;font-size:15px">💬 与 AI 的关键对话记录（至少 2 轮）</h4>
+    <div class="nyx-chat">
+      <div class="nyx-turn nyx-bad">
+        <b class="nyx-who nyx-stu">第 1 轮 · 我的提示词</b><br>
+        "帮我写一个 new Swiper('#nyxSw1') 配置：要循环、自动播放、有圆点分页器，初始效果用 cube。"
+      </div>
+      <div class="nyx-turn nyx-bad">
+        <b class="nyx-who nyx-ai">AI 第 1 轮回答（有坑）</b><br>
+        <code>{ loop:true, autoplay:{delay:3200}, pagination:{el:'#nyxPag1',clickable:true}, effect:'cube' }</code><br>
+        <span style="color:#dc2626">❌ 漏掉两点：① autoplay 没写 <b>disableOnInteraction:false</b>（默认是 true，用户手动一拖，自动播放就永久停了，不符合"手动后不停止"）；② cube 效果没配 <b>cubeEffect</b>，3D 立方体没有阴影和厚度，看起来是扁的。</span>
+      </div>
+      <div class="nyx-turn nyx-good">
+        <b class="nyx-who nyx-stu">第 2 轮 · 我的追问（把漏的说清楚）</b><br>
+        "不对。要求是：用户手动拖动一次之后，自动播放<b>必须继续</b>不能停；另外 cube 立方体要能看到 3D 阴影和侧面厚度。请补上对应参数，并把每个参数为什么这么写给我解释一句。"
+      </div>
+      <div class="nyx-turn nyx-good">
+        <b class="nyx-who nyx-fix">AI 第 2 轮回答（最终版，就是上面跑的代码）</b><br>
+        补了 <code>autoplay.disableOnInteraction:false</code>（手动交互后 autoplay 继续）和 <code>cubeEffect</code>（slideShadows/shadow/shadowOffset/shadowScale 控制立方体阴影与厚度）。
+      </div>
+      <div class="nyx-check">
+        <div><b>① 无缝循环</b><br>最后一张往后翻回到第一张 ✔</div>
+        <div><b>② 3.2s 自动且不停</b><br>拖一下松手，3.2s 后继续翻 ✔</div>
+        <div><b>③ 圆点可点</b><br>点底部圆点直接跳到对应页 ✔</div>
+        <div><b>④ 初始 cube</b><br>打开就是 3D 立方体翻页 ✔</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 任务二 ══════════ -->
+  <div class="nyx-sec">
+    <div class="nyx-sec-head">
+      <span class="nyx-no">二</span>
+      <h2>creative 电影墙仿写<small>课堂没讲的第 7 种效果 · 上一张缩小左移带角度 / 下一张放大右移进场</small></h2>
+    </div>
+    <p class="nyx-txt">参考官方示例 <code>swiper/demo/257-effect-creative.html</code>，用 <code>effect:'creative'</code> + <code>creativeEffect</code> 自定义 transform，做出"电影墙"：上一张缩小、左移并带一点倾斜，下一张放大、从右侧进场。</p>
+    <div class="nyx-req">
+      <h3>✍️ 任务二验收</h3>
+      <p>上一张：<code>translate 左移 + scale 缩小 + rotate 倾斜</code>；下一张：<code>translate 右移 + scale 放大</code>；整体像电影院里一张张海报依次掠过。</p>
+      <span class="nyx-star">⭐ 拖动试试：左右两张以不同大小和角度避让中间当前页</span>
+    </div>
+    <div class="nyx-demo">
+      <span class="nyx-demo-tag">🎛️ 演示二 · creative 电影墙（手动拖动感受 prev / next transform）</span>
+      <div class="nyx-swiper">
+        <div class="swiper" id="nyxSw2">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="swiper-imgs/tiangong_1.jpg" alt="天宫空间站"><div class="nyx-cap"><h3>天宫空间站</h3><p>巡天 · 太空之家</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fuxing_1.jpg" alt="复兴号动车组"><div class="nyx-cap"><h3>复兴号动车组</h3><p>中国速度 · 风驰电掣</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/c919_1.jpg" alt="C919大飞机"><div class="nyx-cap"><h3>C919 大飞机</h3><p>大飞机梦 · 照进蓝天</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fendouzhe_1.jpg" alt="奋斗者号"><div class="nyx-cap"><h3>奋斗者号</h3><p>万米深潜 · 无畏探索</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fast_1.jpg" alt="中国天眼"><div class="nyx-cap"><h3>中国天眼 FAST</h3><p>观天巨目 · 22 年铸就</p></div></div>
+          </div>
+          <div class="swiper-pagination" id="nyxPag2"></div>
+        </div>
+      </div>
+    </div>
+    <h4 style="margin-top:16px;color:#0f2b5b;font-size:15px">🎬 prev / next 的 transform 各控制什么（追问 AI 后用自己的话记下）</h4>
+    <div class="nyx-qa">
+      <span class="nyx-q">prev</span> 控制"当前页<b>左边已经看过</b>的那一张"：把它向左推出画面（translate 负 X）、缩小（scale&lt;1）、沿 Z 轴倾斜一点（rotate Z 负角度）、再压一点透明度，像退到电影墙左侧的一张旧海报。<br>
+      <span class="nyx-q">next</span> 控制"当前页<b>右边将要进来</b>的那一张"：从右侧进场（translate 正 X）、放大一点（scale&gt;1）、沿 Z 轴正方向轻转，像新海报从右侧推到眼前。<br>
+      <span class="nyx-q">百分号相对谁？</span> translate 里的 <code>%</code> 是<b>相对这张 slide 自身的宽/高</b>：<code>['-100%',0,0]</code> = 向左平移整整一张图的宽度，不是相对容器。<br>
+      <span class="nyx-q">现场改一个数</span>：把 <code>next.rotate</code> 改成 <code>[0,0,20]</code>，下一张卡片进场时就会绕 Z 轴多转 20 度，"海报斜着贴过来"的感觉更强。
+    </div>
+  </div>
+
+  <!-- ══════════ 任务三 ══════════ -->
+  <div class="nyx-sec">
+    <div class="nyx-sec-head">
+      <span class="nyx-no">三</span>
+      <h2>综合创作 + 超纲加分<small>第六件展品「爱达·魔都号」 + mousewheel 鼠标滚轮控制</small></h2>
+    </div>
+    <p class="nyx-txt">在原来 5 件展品基础上新增第 6 件：<b>爱达·魔都号</b>（首艘国产大型邮轮，2024 年 1 月首航）。额外加了课堂没讲的 <code>mousewheel</code> 能力——<b>上下滚动鼠标滚轮即可翻页</b>。</p>
+    <div class="nyx-req">
+      <h3>✍️ 任务三验收</h3>
+      <p>① 6 张 slide 结构完整（含魔都号配图）；② 超纲能力选 <b>mousewheel 滚轮控制</b>；③ 保留循环 + 圆点 + 自动播放。</p>
+      <span class="nyx-star">⭐ 把鼠标放在轮播上，上下滚一滚滚轮试试翻页</span>
+    </div>
+    <div class="nyx-demo">
+      <span class="nyx-demo-tag">🎛️ 演示三 · 六件大国重器（滚轮翻页）</span>
+      <div class="nyx-swiper">
+        <div class="swiper" id="nyxSw3">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="swiper-imgs/tiangong_1.jpg" alt="天宫空间站"><div class="nyx-cap"><h3>天宫空间站</h3><p>2022 年全面建成 · 中国人的太空家园</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fuxing_1.jpg" alt="复兴号动车组"><div class="nyx-cap"><h3>复兴号动车组</h3><p>350 km/h · 世界商业运营最高时速</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/c919_1.jpg" alt="C919大飞机"><div class="nyx-cap"><h3>C919 大飞机</h3><p>2023 年商业首航 · 国产干线客机</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fendouzhe_1.jpg" alt="奋斗者号"><div class="nyx-cap"><h3>奋斗者号</h3><p>10909 米 · 马里亚纳海沟</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/fast_1.jpg" alt="中国天眼"><div class="nyx-cap"><h3>中国天眼 FAST</h3><p>500 米口径 · 世界最大单口径射电望远镜</p></div></div>
+            <div class="swiper-slide"><img src="swiper-imgs/aidamodu_1.jpg" alt="爱达·魔都号"><div class="nyx-cap"><h3>爱达·魔都号</h3><p>2024 年 1 月首航 · 首艘国产大型邮轮</p></div></div>
+          </div>
+          <div class="swiper-pagination" id="nyxPag3"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════= 答辩准备 ══════════ -->
+  <div class="nyx-sec">
+    <div class="nyx-sec-head">
+      <span class="nyx-no">★</span>
+      <h2>答辩四连问 · 自问自答<small>老师现场抽问用</small></h2>
+    </div>
+    <div class="nyx-qa"><span class="nyx-q">Q1 这段 mousewheel 代码什么意思？</span><br>
+    <code>mousewheel:{ forceToAxis:true, sensitivity:1 }</code>：forceToAxis 让滚轮只沿水平方向翻页（不会上下乱滚），sensitivity:1 是滚轮灵敏度，数字越大滚一格翻得越快。</div>
+    <div class="nyx-qa"><span class="nyx-q">Q2 AI 第一次给的哪里不对？</span><br>
+    第一版只写了 <code>mousewheel:true</code>，结果在纵向页面上滚轮会同时带着整页上下滚，体验很怪；AI 没主动加 <code>forceToAxis:true</code>。</div>
+    <div class="nyx-qa"><span class="nyx-q">Q3 我改了什么？</span><br>
+    改成对象写法 <code>mousewheel:{forceToAxis:true, sensitivity:1}</code>，把滚轮方向锁定到翻页轴上，页面本身不再跟着滚。</div>
+    <div class="nyx-qa"><span class="nyx-q">Q4 把 delay 改成 1500 会怎样？</span><br>
+    <code>autoplay.delay:1500</code> 表示每张只停留 1.5 秒就翻到下一张，翻页明显变快、更"赶"；配合 loop 会像快速轮播灯箱。想慢一点就调大（如 5000 = 停 5 秒）。</div>
+  </div>
+
+  <div class="nyx-back">
+    <a href='/'>← 返回实践中心</a>
+    <a href='/swiper-lesson'>教师讲解版 →</a>
+    <a href='/swiper-task'>课堂练习版 →</a>
+  </div>
+
+  <footer>Swiper 课后作业 · 大国重器光影展 · 宁烨鑫 24001010916 · 高级网页设计 · 2026-2027-1</footer>
+</div>
+
+<script>
+  // ══════════════════════════════════════════════════════
+  //  任务一：cube 立方体 · 循环 · 3.2s 自动且手动后不停 · 圆点可点
+  // ══════════════════════════════════════════════════════
+  var nyxSw1 = new Swiper('#nyxSw1', {
+    loop: true,
+    effect: 'cube',
+    speed: 800,
+    cubeEffect: {
+      slideShadows: true,
+      shadow: true,
+      shadowOffset: 20,
+      shadowScale: 0.94
+    },
+    autoplay: {
+      delay: 3200,
+      disableOnInteraction: false   // 关键：手动拖动后自动播放继续，不停止
+    },
+    pagination: {
+      el: '#nyxPag1',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '#nyxSw1 .swiper-button-next',
+      prevEl: '#nyxSw1 .swiper-button-prev'
+    }
+  });
+
+  // ══════════════════════════════════════════════════════
+  //  任务二：creative 电影墙 · 上一张缩小左移倾斜 / 下一张放大右移进场
+  // ══════════════════════════════════════════════════════
+  var nyxSw2 = new Swiper('#nyxSw2', {
+    effect: 'creative',
+    loop: true,
+    speed: 700,
+    creativeEffect: {
+      prev: {
+        translate: ['-105%', 0, -200],
+        scale: 0.6,
+        rotate: [0, 0, -18],
+        opacity: 0.6
+      },
+      next: {
+        translate: ['105%', 0, -400],
+        scale: 1.12,
+        rotate: [0, 0, 10],
+        opacity: 0.9
+      }
+    },
+    pagination: {
+      el: '#nyxPag2',
+      clickable: true
+    }
+  });
+
+  // ══════════════════════════════════════════════════════
+  //  任务三：6 张 slide（新增爱达·魔都号）+ mousewheel 滚轮控制
+  // ══════════════════════════════════════════════════════
+  var nyxSw3 = new Swiper('#nyxSw3', {
+    loop: true,
+    speed: 800,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2600,
+      disableOnInteraction: false
+    },
+    mousewheel: {
+      forceToAxis: true,
+      sensitivity: 1
+    },
+    pagination: {
+      el: '#nyxPag3',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '#nyxSw3 .swiper-button-next',
+      prevEl: '#nyxSw3 .swiper-button-prev'
+    }
+  });
+</script>
+</body>
+</html>
